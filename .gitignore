@@ -1,0 +1,10 @@
+#Visual Studio Cache Files
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+
+ProjectFiles/Engine/Debug/Tmp/
