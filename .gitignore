@@ -8,3 +8,4 @@ ipch/
 *.cachefile
 
 ProjectFiles/Engine/Debug/Tmp/
+ProjectFiles/SandboxGame/Debug/Tmp/
