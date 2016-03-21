@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Vector2D.inl" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3D9E9762-9388-4001-9190-A7AD7F901B9A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
