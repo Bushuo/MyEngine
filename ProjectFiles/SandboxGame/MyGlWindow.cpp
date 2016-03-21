@@ -2,6 +2,8 @@
 #include <cassert>
 #include "MyGlWindow.h"
 
+#include <iostream>
+
 void MyGlWindow::initializeGL()
 {
 	GLenum errorCode = glewInit();
@@ -18,6 +20,16 @@ void MyGlWindow::initializeGL()
 	};
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_STATIC_DRAW);
+
+	connect(&myTimer, SIGNAL(timeout()),
+		this, SLOT(myUpdate()));
+	myTimer.start(0);
+
+}
+
+void MyGlWindow::myUpdate()
+{
+	std::cout << "frame!" << std::endl;
 }
 
 void MyGlWindow::paintGL()
