@@ -3,8 +3,9 @@
 #include <cassert>
 #include <Math\Vector2D.h>
 #include <Qt\qdebug.h>
+#include <Timing\Clock.h>
 using Math::Vector2D;
-
+using Timing::Clock;
 // unnamed namespace make it private to the file
 namespace
 {
@@ -18,6 +19,7 @@ namespace
 	// devide the total amount of bytes by the amount of bytes of the first entry = number of entries
 	const unsigned int NUM_VERTS = sizeof(verts) / sizeof(*verts);
 	Vector2D shipPosition(0.0f, 0.0f);
+	Clock clock;
 }
 
 void MyGlWindow::initializeGL()
@@ -31,21 +33,19 @@ void MyGlWindow::initializeGL()
 	glBufferData(GL_ARRAY_BUFFER, sizeof(verts), NULL, GL_DYNAMIC_DRAW);
 
 	connect(&myTimer, SIGNAL(timeout()), this, SLOT(myUpdate()));
-	myTimer.start(0);
+	myTimer.start(200);
 
 }
 int debugInt = 1;
 void MyGlWindow::myUpdate()
 {
-	if (debugInt++ % 20 == 0)
+	/*if (debugInt++ % 20 == 0)
 		for (int i = 0; i < 10000; i++)
-			qDebug() << "Hello";
+			qDebug() << "Hello";*/
 	Vector2D velocity(0.001f, 0.001f);
 	shipPosition = shipPosition + velocity;
 	repaint();
 }
-
-
 
 void MyGlWindow::paintGL()
 {
@@ -60,4 +60,14 @@ void MyGlWindow::paintGL()
 	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(translatedVerts), translatedVerts);
 
 	glDrawArrays(GL_TRIANGLES, 0, 3);
+}
+
+bool MyGlWindow::initialize()
+{
+	return clock.initialize();
+}
+
+bool MyGlWindow::shutdown()
+{
+	return clock.shutdown();
 }

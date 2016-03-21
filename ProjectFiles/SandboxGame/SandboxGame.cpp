@@ -10,8 +10,13 @@ int main(int argc, char* argv[])
 
 	// get a window
 	MyGlWindow myGlWindow;
+	myGlWindow.initialize();
 	myGlWindow.show();
 
 	// return error code
-	return application.exec();
+	int errorCode = application.exec();
+	if (!myGlWindow.shutdown())
+		errorCode |= 1;
+	return errorCode;
+	
 }

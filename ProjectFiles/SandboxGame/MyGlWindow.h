@@ -14,6 +14,9 @@ protected:
 	void paintGL();
 private slots:
 	void myUpdate();
+public:
+	bool initialize();
+	bool shutdown();
 };
 
 #endif
