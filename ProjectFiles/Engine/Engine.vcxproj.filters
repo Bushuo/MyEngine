@@ -5,5 +5,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\Vector2D.h" />
+    <ClInclude Include="Timing\Clock.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Timing\Clock.cpp" />
   </ItemGroup>
 </Project>

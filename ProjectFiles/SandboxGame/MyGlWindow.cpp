@@ -2,6 +2,7 @@
 #include "MyGlWindow.h"
 #include <cassert>
 #include <Math\Vector2D.h>
+#include <Qt\qdebug.h>
 using Math::Vector2D;
 
 // unnamed namespace make it private to the file
@@ -14,7 +15,7 @@ namespace
 		Vector2D(+0.1f, -0.1f),
 	};
 
-	// devide the total number of bytes by the number of bytes of the first entry = number of entries
+	// devide the total amount of bytes by the amount of bytes of the first entry = number of entries
 	const unsigned int NUM_VERTS = sizeof(verts) / sizeof(*verts);
 	Vector2D shipPosition(0.0f, 0.0f);
 }
@@ -33,13 +34,18 @@ void MyGlWindow::initializeGL()
 	myTimer.start(0);
 
 }
-
+int debugInt = 1;
 void MyGlWindow::myUpdate()
 {
-	Vector2D velocity(0.0001f, 0.0001f);
+	if (debugInt++ % 20 == 0)
+		for (int i = 0; i < 10000; i++)
+			qDebug() << "Hello";
+	Vector2D velocity(0.001f, 0.001f);
 	shipPosition = shipPosition + velocity;
 	repaint();
 }
+
+
 
 void MyGlWindow::paintGL()
 {
