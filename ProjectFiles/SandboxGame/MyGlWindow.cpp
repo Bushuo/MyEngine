@@ -33,17 +33,18 @@ void MyGlWindow::initializeGL()
 	glBufferData(GL_ARRAY_BUFFER, sizeof(verts), NULL, GL_DYNAMIC_DRAW);
 
 	connect(&myTimer, SIGNAL(timeout()), this, SLOT(myUpdate()));
-	myTimer.start(200);
+	myTimer.start(0);
 
 }
 int debugInt = 1;
 void MyGlWindow::myUpdate()
 {
+	clock.newFrame();
 	/*if (debugInt++ % 20 == 0)
-		for (int i = 0; i < 10000; i++)
+		for (int i = 0; i < 500; i++)
 			qDebug() << "Hello";*/
-	Vector2D velocity(0.001f, 0.001f);
-	shipPosition = shipPosition + velocity;
+	Vector2D velocity(0.5f, 0.5f);
+	shipPosition = shipPosition + velocity * clock.timeElapsedLastFrame();
 	repaint();
 }
 

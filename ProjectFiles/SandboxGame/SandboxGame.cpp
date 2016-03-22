@@ -10,7 +10,8 @@ int main(int argc, char* argv[])
 
 	// get a window
 	MyGlWindow myGlWindow;
-	myGlWindow.initialize();
+	if (!myGlWindow.initialize())
+		return -1;
 	myGlWindow.show();
 
 	// return error code
