@@ -1,7 +1,9 @@
 #include <gtest\gtest.h>
 #include "Math\Matrix2D.h"
+#include "Math\Vector2D.h"
 
 using Math::Matrix2D;
+using Math::Vector2D;
 
 TEST(Matrix2D, Constructor)
 {
@@ -13,5 +15,11 @@ TEST(Matrix2D, Constructor)
 }
 TEST(Matrix2D, MatrixVectorMultiply)
 {
-
+	Matrix2D op(
+		2, -3,
+		4, -5);
+	Vector2D victim(3, 9);
+	Vector2D victimPrime = op * victim;
+	EXPECT_FLOAT_EQ(victimPrime.x, -21.0f);
+	EXPECT_FLOAT_EQ(victimPrime.y, -33.0f);
 }
