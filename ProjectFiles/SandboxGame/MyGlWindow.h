@@ -14,6 +14,7 @@ protected:
 	void paintGL();
 private slots:
 	void myUpdate();
+	void checkKeyState();
 public:
 	bool initialize();
 	bool shutdown();

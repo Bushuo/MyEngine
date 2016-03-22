@@ -1,9 +1,11 @@
-#include "GL\glew.h"
+#include <GL\glew.h>
 #include "MyGlWindow.h"
 #include <cassert>
-#include <Math\Vector2D.h>
 #include <Qt\qdebug.h>
+#include <QtGui\QKeyEvent>
+#include <Math\Vector2D.h>
 #include <Timing\Clock.h>
+
 using Math::Vector2D;
 using Timing::Clock;
 // unnamed namespace make it private to the file
@@ -18,7 +20,7 @@ namespace
 
 	// devide the total amount of bytes by the amount of bytes of the first entry = number of entries
 	const unsigned int NUM_VERTS = sizeof(verts) / sizeof(*verts);
-	Vector2D shipPosition(0.0f, 0.0f);
+	Vector2D shipPosition;
 	Clock clock;
 }
 
@@ -36,15 +38,11 @@ void MyGlWindow::initializeGL()
 	myTimer.start(0);
 
 }
-int debugInt = 1;
+
 void MyGlWindow::myUpdate()
 {
 	clock.newFrame();
-	/*if (debugInt++ % 20 == 0)
-		for (int i = 0; i < 500; i++)
-			qDebug() << "Hello";*/
-	Vector2D velocity(0.5f, 0.5f);
-	shipPosition = shipPosition + velocity * clock.timeElapsedLastFrame();
+	checkKeyState();
 	repaint();
 }
 
@@ -71,4 +69,17 @@ bool MyGlWindow::initialize()
 bool MyGlWindow::shutdown()
 {
 	return clock.shutdown();
+}
+
+void MyGlWindow::checkKeyState()
+{
+	const float SPEED = 0.002f;
+	if (GetAsyncKeyState(VK_UP))
+		shipPosition.y += SPEED;
+	if (GetAsyncKeyState(VK_DOWN))
+		shipPosition.y -= SPEED;
+	if (GetAsyncKeyState(VK_LEFT))
+		shipPosition.x -= SPEED;
+	if (GetAsyncKeyState(VK_RIGHT))
+		shipPosition.x += SPEED;
 }
