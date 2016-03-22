@@ -6,6 +6,14 @@ Matrix2D::Matrix2D(
 	r1c0(r1c0), r1c1(r1c1)
 {
 }
+
+Matrix2D Matrix2D::rotate(float angleInRadians)
+{
+	return Matrix2D(
+		cos(angleInRadians), -sin(angleInRadians),
+		sin(angleInRadians), cos(angleInRadians));
+}
+
 Vector2D operator*(const Matrix2D& matrix, const Vector2D& vector)
 {
 	Vector2D temp;

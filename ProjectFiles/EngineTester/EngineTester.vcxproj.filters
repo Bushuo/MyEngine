@@ -7,4 +7,7 @@
     <ClCompile Include="Matrix2DTests.cpp" />
     <ClCompile Include="TestMain.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HelperFunctions.h" />
+  </ItemGroup>
 </Project>
