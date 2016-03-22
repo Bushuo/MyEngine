@@ -152,7 +152,8 @@
   <ItemGroup>
     <ClCompile Include="..\Middleware\gtest\src\gtest-all.cc" />
     <ClCompile Include="ClockTests.cpp" />
-    <ClCompile Include="MyMain.cpp" />
+    <ClCompile Include="Matrix2DTests.cpp" />
+    <ClCompile Include="TestMain.cpp" />
     <ClCompile Include="Vector2DTests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -82,9 +82,6 @@ void MyGlWindow::paintGL()
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
-
-
-
 bool MyGlWindow::shutdown()
 {
 	return clock.shutdown();
