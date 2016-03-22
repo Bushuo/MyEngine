@@ -40,13 +40,30 @@ void MyGlWindow::initializeGL()
 
 }
 
+bool MyGlWindow::initialize()
+{
+	return clock.initialize();
+}
+
 void MyGlWindow::myUpdate()
 {
 	clock.newFrame();
 	updateVelocity();
-	shipPosition = shipPosition + 
-		shipVelocity * clock.timeElapsedLastFrame();
+	shipPosition +=	shipVelocity * clock.timeElapsedLastFrame();
 	repaint();
+}
+
+void MyGlWindow::updateVelocity()
+{
+	const float ACCELERATION = 0.3f * clock.timeElapsedLastFrame();
+	if (GetAsyncKeyState(VK_UP))
+		shipVelocity.y += ACCELERATION;
+	if (GetAsyncKeyState(VK_DOWN))
+		shipVelocity.y -= ACCELERATION;
+	if (GetAsyncKeyState(VK_LEFT))
+		shipVelocity.x -= ACCELERATION;
+	if (GetAsyncKeyState(VK_RIGHT))
+		shipVelocity.x += ACCELERATION;
 }
 
 void MyGlWindow::paintGL()
@@ -65,25 +82,10 @@ void MyGlWindow::paintGL()
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
-bool MyGlWindow::initialize()
-{
-	return clock.initialize();
-}
+
+
 
 bool MyGlWindow::shutdown()
 {
 	return clock.shutdown();
-}
-
-void MyGlWindow::updateVelocity()
-{
-	const float ACCELERATION = 0.3f * clock.timeElapsedLastFrame();
-	if (GetAsyncKeyState(VK_UP))
-		shipVelocity.y += ACCELERATION;
-	if (GetAsyncKeyState(VK_DOWN))
-		shipVelocity.y -= ACCELERATION;
-	if (GetAsyncKeyState(VK_LEFT))
-		shipVelocity.x -= ACCELERATION;
-	if (GetAsyncKeyState(VK_RIGHT))
-		shipVelocity.x += ACCELERATION;
 }
