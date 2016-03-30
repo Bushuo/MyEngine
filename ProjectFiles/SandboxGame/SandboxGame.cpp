@@ -19,5 +19,4 @@ int main(int argc, char* argv[])
 	if (!myGlWindow.shutdown())
 		errorCode |= 1;
 	return errorCode;
-	
 }

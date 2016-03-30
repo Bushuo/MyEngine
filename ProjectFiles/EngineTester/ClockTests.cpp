@@ -33,7 +33,7 @@ TEST(Clock, FrameTimeMeasuring)
 	
 	const int NUM_TESTS = 10 + rand() % 100;
 	const float THRESHOLD = 0.01f;
-	for (unsigned int i = 0; i < NUM_TESTS; i++)
+	for (int i = 0; i < NUM_TESTS; i++)
 	{
 		std::cout << ".";
 		int thisTestTimeMilliseconds = rand() % 10000;

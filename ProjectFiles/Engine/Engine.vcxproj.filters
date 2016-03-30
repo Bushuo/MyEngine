@@ -8,6 +8,7 @@
     <ClInclude Include="Math\Vector2D.h" />
     <ClInclude Include="Timing\Clock.h" />
     <ClInclude Include="Math\Matrix2D.h" />
+    <ClInclude Include="Math\Constants.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Timing\Clock.cpp" />

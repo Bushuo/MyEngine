@@ -35,17 +35,17 @@ TEST(Vector2D, ScalarMultiplication)
 }
 TEST(Vector2D, AssignmentPlusEquals)
 {
-	Vector2D source(5, -123.123);
-	Vector2D another(1, 1);
+	Vector2D source(5.f, -123.123f);
+	Vector2D another(1.f, 1.f);
 	another += source;
-	EXPECT_FLOAT_EQ(another.x, 6);
-	EXPECT_FLOAT_EQ(another.y, -122.123);
+	EXPECT_FLOAT_EQ(another.x, 6.f);
+	EXPECT_FLOAT_EQ(another.y, -122.123f);
 }
 TEST(Vector2D, AssignmentMinusEquals)
 {
-	Vector2D source(5, -123.123);
-	Vector2D another(1, 1);
+	Vector2D source(5.f, -123.123f);
+	Vector2D another(1.f, 1.f);
 	another -= source;
-	EXPECT_FLOAT_EQ(another.x, -4);
-	EXPECT_FLOAT_EQ(another.y, 124.123);
+	EXPECT_FLOAT_EQ(another.x, -4.f);
+	EXPECT_FLOAT_EQ(another.y, 124.123f);
 }
